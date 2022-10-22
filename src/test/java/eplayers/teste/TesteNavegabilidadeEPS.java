@@ -22,9 +22,9 @@ ChromeDriver driver;
 	@Test
 	public void TesteNavegacao() throws InterruptedException {
 		
-		String[]=listasenhas={"342423","safdasdf","123","aaaa"};
+		String[]listasenhas={"342423","safdasdf","123","aaaa", "123456"};
 		
-		for (int tentativas=0; tentativas<listasenhas.lengh; tentativas++){
+		for (int tentativas=0; tentativas<listasenhas.length; tentativas++){
 			try{
 				driver.findElement(By.id("inscrever")).click();
 				Thread.sleep(250);
@@ -37,8 +37,10 @@ ChromeDriver driver;
 				driver.findElement(By.id("senha")).sendKeys(listasenhas[tentativas]);
 				Thread.sleep(250);
 				driver.findElement(By.id("enviar")).click();
+				Thread.sleep(250);
+				driver.switchTo().alert().accept();
 				
-			}catch (interruptedException error){
+			}catch (InterruptedException error){
 				error.printStackTrace();
 			}
 		}
@@ -53,4 +55,3 @@ ChromeDriver driver;
 		driver.quit();
 	}
 }
-
